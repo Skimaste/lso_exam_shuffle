@@ -228,7 +228,8 @@ class exam_solver:
 
             for i in range(self.n):
                 profits = np.maximum(0.0, mu - self.h[i])
-                kp_val, selected = self.__kpsolve__(profits.astype(int), self.p, self.c[i])
+                kp_val, selected = self.__kpsolve__((profits * 10000).astype(int), self.p, self.c[i])
+                kp_val =/ 10000.0
 
                 if self.r[i] - kp_val < 0:
                     self.y[i] = 1
